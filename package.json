@@ -32,17 +32,11 @@
     "strapi-utils": "3.0.0-beta.10"
   },
   "author": {
-    "name": "admin",
-    "email": "",
-    "url": ""
+    "name": "admin"
   },
-  "maintainers": [
-    {
-      "name": "admin",
-      "email": "",
-      "url": ""
-    }
-  ],
+  "maintainers": [{
+    "name": "admin"
+  }],
   "strapi": {
     "uuid": "f0be2cfa-e1bf-49a1-9471-1b231c81562c"
   },

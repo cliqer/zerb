@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "publisher",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "books": {
+      "collection": "book",
+      "via": "publisher"
+    }
+  }
+}

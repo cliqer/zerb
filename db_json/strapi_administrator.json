@@ -1,0 +1,4 @@
+[
+{ "_id" : { "$oid" : "5d002bba3c426daf0bebaceb" }, "blocked" : false, "username" : "admin", "password" : "$2a$10$YFjvHrvk/fTOB8nFeqD1EOe9yVvVVAJ3jhgzQYjs1Xe07y7nR.ANa", "email" : "gianniskarmas@gmail.com", "__v" : 0 },
+{ "_id" : { "$oid" : "5d00711f923c9652ab133384" }, "blocked" : false, "email" : "zitamed@otenet.gr", "username" : "zerbinis", "password" : "$2a$10$zoRc2/zkLhMzXuXfDyFINerPyythLa8.aGn9ykvqGe3a0nZdSDw7.", "__v" : 0 }
+]

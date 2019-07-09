@@ -1,0 +1,87 @@
+{
+  "connection": "default",
+  "collectionName": "book",
+  "info": {
+    "name": "book",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "description": {
+      "type": "text"
+    },
+    "published": {
+      "type": "date"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "default": "0"
+    },
+    "inStock": {
+      "type": "integer",
+      "default": "1",
+      "required": true
+    },
+    "categories": {
+      "collection": "category",
+      "via": "books",
+      "dominant": true
+    },
+    "listPrice": {
+      "type": "decimal"
+    },
+    "dimensions": {
+      "type": "string"
+    },
+    "diligence": {
+      "type": "string"
+    },
+    "translation": {
+      "type": "string"
+    },
+    "pages": {
+      "type": "integer"
+    },
+    "publisher": {
+      "model": "publisher",
+      "via": "books"
+    },
+    "format": {
+      "enum": [
+        "",
+        "Hardcover",
+        "Paperback"
+      ],
+      "type": "enumeration"
+    },
+    "links": {
+      "type": "text"
+    },
+    "edition": {
+      "type": "integer"
+    },
+    "popularity": {
+      "type": "integer"
+    }
+  }
+}

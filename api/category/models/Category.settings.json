@@ -1,0 +1,45 @@
+{
+  "connection": "default",
+  "collectionName": "category",
+  "info": {
+    "name": "category",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "status": {
+      "default": "active",
+      "enum": [
+        "active",
+        "hidden",
+        "disabled"
+      ],
+      "type": "enumeration"
+    },
+    "category": {
+      "model": "category"
+    },
+    "position": {
+      "type": "integer",
+      "min": 1,
+      "required": true,
+      "unique": true
+    },
+    "books": {
+      "collection": "book",
+      "via": "categories"
+    }
+  }
+}

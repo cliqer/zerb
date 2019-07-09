@@ -1,0 +1,955 @@
+type Book {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+  isbn: String
+  author: String
+  description: String
+  published: DateTime
+  price: Float!
+  inStock: Int!
+  listPrice: Float
+  dimensions: String
+  diligence: String
+  translation: String
+  pages: Int
+  publisher: Publisher
+  format: ENUM_BOOK_FORMAT
+  links: String
+  edition: Int
+  popularity: Int
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+}
+
+type BookAggregator {
+  count: Int
+  totalCount: Int
+  sum: BookAggregatorSum
+  avg: BookAggregatorAvg
+  min: BookAggregatorMin
+  max: BookAggregatorMax
+}
+
+type BookAggregatorAvg {
+  listPrice: Float
+  pages: Float
+  edition: Float
+  popularity: Float
+}
+
+type BookAggregatorMax {
+  listPrice: Float
+  pages: Float
+  edition: Float
+  popularity: Float
+}
+
+type BookAggregatorMin {
+  listPrice: Float
+  pages: Float
+  edition: Float
+  popularity: Float
+}
+
+type BookAggregatorSum {
+  listPrice: Float
+  pages: Float
+  edition: Float
+  popularity: Float
+}
+
+type BookConnection {
+  values: [Book]
+  groupBy: BookGroupBy
+  aggregate: BookAggregator
+}
+
+type BookConnection_id {
+  key: ID
+  connection: BookConnection
+}
+
+type BookConnectionAuthor {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionCreatedAt {
+  key: DateTime
+  connection: BookConnection
+}
+
+type BookConnectionDescription {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionDiligence {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionDimensions {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionEdition {
+  key: Int
+  connection: BookConnection
+}
+
+type BookConnectionFormat {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionId {
+  key: ID
+  connection: BookConnection
+}
+
+type BookConnectionInStock {
+  key: Int
+  connection: BookConnection
+}
+
+type BookConnectionIsbn {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionLinks {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionListPrice {
+  key: Float
+  connection: BookConnection
+}
+
+type BookConnectionPages {
+  key: Int
+  connection: BookConnection
+}
+
+type BookConnectionPopularity {
+  key: Int
+  connection: BookConnection
+}
+
+type BookConnectionPrice {
+  key: Float
+  connection: BookConnection
+}
+
+type BookConnectionPublished {
+  key: DateTime
+  connection: BookConnection
+}
+
+type BookConnectionPublisher {
+  key: ID
+  connection: BookConnection
+}
+
+type BookConnectionTitle {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionTranslation {
+  key: String
+  connection: BookConnection
+}
+
+type BookConnectionUpdatedAt {
+  key: DateTime
+  connection: BookConnection
+}
+
+type BookGroupBy {
+  _id: [BookConnection_id]
+  id: [BookConnectionId]
+  createdAt: [BookConnectionCreatedAt]
+  updatedAt: [BookConnectionUpdatedAt]
+  title: [BookConnectionTitle]
+  isbn: [BookConnectionIsbn]
+  author: [BookConnectionAuthor]
+  description: [BookConnectionDescription]
+  published: [BookConnectionPublished]
+  price: [BookConnectionPrice]
+  inStock: [BookConnectionInStock]
+  listPrice: [BookConnectionListPrice]
+  dimensions: [BookConnectionDimensions]
+  diligence: [BookConnectionDiligence]
+  translation: [BookConnectionTranslation]
+  pages: [BookConnectionPages]
+  publisher: [BookConnectionPublisher]
+  format: [BookConnectionFormat]
+  links: [BookConnectionLinks]
+  edition: [BookConnectionEdition]
+  popularity: [BookConnectionPopularity]
+}
+
+input BookInput {
+  title: String
+  isbn: String
+  author: String
+  image: [ID]
+  description: String
+  published: DateTime
+  price: Float!
+  inStock: Int!
+  categories: [ID]
+  listPrice: Float
+  dimensions: String
+  diligence: String
+  translation: String
+  pages: Int
+  publisher: ID
+  format: ENUM_BOOK_FORMAT
+  links: String
+  edition: Int
+  popularity: Int
+}
+
+type Category {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String
+  status: ENUM_CATEGORY_STATUS
+  category: Category
+  position: Int!
+  books(sort: String, limit: Int, start: Int, where: JSON): [Book]
+}
+
+type CategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CategoryConnection {
+  values: [Category]
+  groupBy: CategoryGroupBy
+  aggregate: CategoryAggregator
+}
+
+type CategoryConnection_id {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionCategory {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionCreatedAt {
+  key: DateTime
+  connection: CategoryConnection
+}
+
+type CategoryConnectionDescription {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionId {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionName {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionPosition {
+  key: Int
+  connection: CategoryConnection
+}
+
+type CategoryConnectionStatus {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionUpdatedAt {
+  key: DateTime
+  connection: CategoryConnection
+}
+
+type CategoryGroupBy {
+  _id: [CategoryConnection_id]
+  id: [CategoryConnectionId]
+  createdAt: [CategoryConnectionCreatedAt]
+  updatedAt: [CategoryConnectionUpdatedAt]
+  name: [CategoryConnectionName]
+  description: [CategoryConnectionDescription]
+  status: [CategoryConnectionStatus]
+  category: [CategoryConnectionCategory]
+  position: [CategoryConnectionPosition]
+}
+
+input CategoryInput {
+  name: String!
+  description: String
+  status: ENUM_CATEGORY_STATUS
+  category: ID
+  position: Int!
+  books: [ID]
+}
+
+input createBookInput {
+  data: BookInput
+}
+
+type createBookPayload {
+  book: Book
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
+}
+
+input createPublisherInput {
+  data: PublisherInput
+}
+
+type createPublisherPayload {
+  publisher: Publisher
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
+
+input deleteBookInput {
+  where: InputID
+}
+
+type deleteBookPayload {
+  book: Book
+}
+
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
+input deletePublisherInput {
+  where: InputID
+}
+
+type deletePublisherPayload {
+  publisher: Publisher
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editBookInput {
+  title: String
+  isbn: String
+  author: String
+  image: [ID]
+  description: String
+  published: DateTime
+  price: Float
+  inStock: Int
+  categories: [ID]
+  listPrice: Float
+  dimensions: String
+  diligence: String
+  translation: String
+  pages: Int
+  publisher: ID
+  format: ENUM_BOOK_FORMAT
+  links: String
+  edition: Int
+  popularity: Int
+}
+
+input editCategoryInput {
+  name: String
+  description: String
+  status: ENUM_CATEGORY_STATUS
+  category: ID
+  position: Int
+  books: [ID]
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: String
+  url: String
+  provider: String
+  public_id: String
+  related: [ID]
+}
+
+input editPublisherInput {
+  name: String
+  books: [ID]
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+enum ENUM_BOOK_FORMAT {
+  Hardcover
+  Paperback
+}
+
+enum ENUM_CATEGORY_STATUS {
+  active
+  hidden
+  disabled
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Book | createBookPayload | updateBookPayload | deleteBookPayload | BookConnection | BookAggregator | BookAggregatorSum | BookAggregatorAvg | BookAggregatorMin | BookAggregatorMax | BookGroupBy | BookConnection_id | BookConnectionId | BookConnectionCreatedAt | BookConnectionUpdatedAt | BookConnectionTitle | BookConnectionIsbn | BookConnectionAuthor | BookConnectionDescription | BookConnectionPublished | BookConnectionPrice | BookConnectionInStock | BookConnectionListPrice | BookConnectionDimensions | BookConnectionDiligence | BookConnectionTranslation | BookConnectionPages | BookConnectionPublisher | BookConnectionFormat | BookConnectionLinks | BookConnectionEdition | BookConnectionPopularity | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnection_id | CategoryConnectionId | CategoryConnectionCreatedAt | CategoryConnectionUpdatedAt | CategoryConnectionName | CategoryConnectionDescription | CategoryConnectionStatus | CategoryConnectionCategory | CategoryConnectionPosition | Publisher | createPublisherPayload | updatePublisherPayload | deletePublisherPayload | PublisherConnection | PublisherAggregator | PublisherGroupBy | PublisherConnection_id | PublisherConnectionId | PublisherConnectionCreatedAt | PublisherConnectionUpdatedAt | PublisherConnectionName | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+
+type Mutation {
+  createBook(input: createBookInput): createBookPayload
+  updateBook(input: updateBookInput): updateBookPayload
+  deleteBook(input: deleteBookInput): deleteBookPayload
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createPublisher(input: createPublisherInput): createPublisherPayload
+  updatePublisher(input: updatePublisherInput): updatePublisherPayload
+  deletePublisher(input: deletePublisherInput): deletePublisherPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
+}
+
+type Publisher {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  books(sort: String, limit: Int, start: Int, where: JSON): [Book]
+}
+
+type PublisherAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PublisherConnection {
+  values: [Publisher]
+  groupBy: PublisherGroupBy
+  aggregate: PublisherAggregator
+}
+
+type PublisherConnection_id {
+  key: ID
+  connection: PublisherConnection
+}
+
+type PublisherConnectionCreatedAt {
+  key: DateTime
+  connection: PublisherConnection
+}
+
+type PublisherConnectionId {
+  key: ID
+  connection: PublisherConnection
+}
+
+type PublisherConnectionName {
+  key: String
+  connection: PublisherConnection
+}
+
+type PublisherConnectionUpdatedAt {
+  key: DateTime
+  connection: PublisherConnection
+}
+
+type PublisherGroupBy {
+  _id: [PublisherConnection_id]
+  id: [PublisherConnectionId]
+  createdAt: [PublisherConnectionCreatedAt]
+  updatedAt: [PublisherConnectionUpdatedAt]
+  name: [PublisherConnectionName]
+}
+
+input PublisherInput {
+  name: String
+  books: [ID]
+}
+
+type Query {
+  book(id: ID!): Book
+  books(sort: String, limit: Int, start: Int, where: JSON): [Book]
+  booksConnection(sort: String, limit: Int, start: Int, where: JSON): BookConnection
+  category(id: ID!): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
+  publisher(id: ID!): Publisher
+  publishers(sort: String, limit: Int, start: Int, where: JSON): [Publisher]
+  publishersConnection(sort: String, limit: Int, start: Int, where: JSON): PublisherConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input updateBookInput {
+  where: InputID
+  data: editBookInput
+}
+
+type updateBookPayload {
+  book: Book
+}
+
+input updateCategoryInput {
+  where: InputID
+  data: editCategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
+}
+
+input updatePublisherInput {
+  where: InputID
+  data: editPublisherInput
+}
+
+type updatePublisherPayload {
+  publisher: Publisher
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnection_id {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPublic_id {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSha256 {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  _id: [UploadFileConnection_id]
+  id: [UploadFileConnectionId]
+  createdAt: [UploadFileConnectionCreatedAt]
+  updatedAt: [UploadFileConnectionUpdatedAt]
+  name: [UploadFileConnectionName]
+  hash: [UploadFileConnectionHash]
+  sha256: [UploadFileConnectionSha256]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  provider: [UploadFileConnectionProvider]
+  public_id: [UploadFileConnectionPublic_id]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type UsersPermissionsMe {
+  _id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  _id: ID!
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  _id: ID!
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnection_id {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  _id: [UsersPermissionsRoleConnection_id]
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnection_id {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreatedAt {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdatedAt {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  _id: [UsersPermissionsUserConnection_id]
+  id: [UsersPermissionsUserConnectionId]
+  createdAt: [UsersPermissionsUserConnectionCreatedAt]
+  updatedAt: [UsersPermissionsUserConnectionUpdatedAt]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}

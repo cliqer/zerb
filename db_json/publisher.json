@@ -1,0 +1,10 @@
+[
+{ "_id" : { "$oid" : "5d00faeed92c8c23103fd61c" }, "name" : "McGraw-Hill Education", "createdAt" : { "$date" : "2019-06-12T13:15:26.415+0000" }, "updatedAt" : { "$date" : "2019-06-12T13:15:26.466+0000" }, "__v" : 0, "id" : "5d00faeed92c8c23103fd61c" },
+{ "_id" : { "$oid" : "5d00fb23d92c8c23103fd61d" }, "name" : "LWW-Wolter Kluwer", "createdAt" : { "$date" : "2019-06-12T13:16:19.047+0000" }, "updatedAt" : { "$date" : "2019-06-13T06:26:58.922+0000" }, "__v" : 0, "id" : "5d00fb23d92c8c23103fd61d" },
+{ "_id" : { "$oid" : "5d01e9e8864c4810b34462a3" }, "name" : "Oxford University Press", "createdAt" : { "$date" : "2019-06-13T06:15:04.496+0000" }, "updatedAt" : { "$date" : "2019-06-13T06:15:04.551+0000" }, "__v" : 0, "id" : "5d01e9e8864c4810b34462a3" },
+{ "_id" : { "$oid" : "5d01ecbe864c4810b34462a4" }, "name" : "Elsevier", "createdAt" : { "$date" : "2019-06-13T06:27:10.487+0000" }, "updatedAt" : { "$date" : "2019-06-13T06:27:10.552+0000" }, "__v" : 0, "id" : "5d01ecbe864c4810b34462a4" },
+{ "_id" : { "$oid" : "5d01ecff864c4810b34462a5" }, "name" : "Wiley", "createdAt" : { "$date" : "2019-06-13T06:28:15.407+0000" }, "updatedAt" : { "$date" : "2019-06-13T06:28:15.437+0000" }, "__v" : 0, "id" : "5d01ecff864c4810b34462a5" },
+{ "_id" : { "$oid" : "5d01ed17864c4810b34462a6" }, "name" : "Thieme", "createdAt" : { "$date" : "2019-06-13T06:28:39.497+0000" }, "updatedAt" : { "$date" : "2019-06-13T06:28:39.527+0000" }, "__v" : 0, "id" : "5d01ed17864c4810b34462a6" },
+{ "_id" : { "$oid" : "5d01ed1f864c4810b34462a7" }, "name" : "Springer", "createdAt" : { "$date" : "2019-06-13T06:28:47.625+0000" }, "updatedAt" : { "$date" : "2019-06-13T06:28:47.655+0000" }, "__v" : 0, "id" : "5d01ed1f864c4810b34462a7" },
+{ "_id" : { "$oid" : "5d1b09d71467802ff47543bd" }, "name" : "ΖΗΤΑ ΙΑΤΡΙΚΕΣ ΕΚΔΟΣΕΙΣ", "createdAt" : { "$date" : "2019-07-02T07:37:59.009+0000" }, "updatedAt" : { "$date" : "2019-07-02T07:37:59.053+0000" }, "__v" : 0, "id" : "5d1b09d71467802ff47543bd" }
+]
